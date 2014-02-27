@@ -12,7 +12,7 @@ shinyServer(function(input, output){
   
   output$sankey <-  renderChart2({  
     sankeyPlot <- rCharts$new()
-    sankeyPlot$setLib("http://timelyportfolio.github.io/rCharts_d3_sankey")
+    sankeyPlot$setLib(paste0(getwd()))
     sankeyPlot$setTemplate(
       afterScript = "<script></script>"
     )
@@ -25,5 +25,14 @@ shinyServer(function(input, output){
       height = 500
     )
     return(sankeyPlot)
-  }) 
+  })
+  
+  output$dimple <- renderChart2({
+    d1 <- dPlot(
+      value~source,
+      data=data(),
+      type = "bar"
+    )
+    return(d1)
+  })
 })
