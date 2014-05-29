@@ -1,13 +1,18 @@
-addResourcePath("assets",".")
+require(shiny)
+require(rCharts)
+
+# addResourcePath("assets",".")
+
+#options(RCHART_LIB = 'd3')
 
 shinyUI(bootstrapPage(
   tagList(
     singleton(
       tags$head(
-        tags$script(src='assets/js/d3.v3.js', type = 'text/javascript', charset = 'utf-8'),
-        tags$script(src='assets/js/sankey.js', type = 'text/javascript', charset = 'utf-8'),
-        tags$script(src='assets/js/dimple.v1.1.5.js', type = 'text/javascript', charset = 'utf-8'),
-        tags$link(rel = 'stylesheet', type = 'text/css', href = 'assets/css/sankey.css')
+        tags$script(src='./js/d3.v3.js', type = 'text/javascript', charset = 'utf-8'),
+        tags$script(src='./js/sankey.js', type = 'text/javascript', charset = 'utf-8'),
+        tags$script(src='./js/dimple.v1.1.5.js', type = 'text/javascript', charset = 'utf-8'),
+        tags$link(rel = 'stylesheet', type = 'text/css', href = './css/sankey.css')
       )
     )
   ),
@@ -21,10 +26,12 @@ shinyUI(bootstrapPage(
           h4("Empty")
         ),
         mainPanel(
-          tableOutput("table"),
-          showOutput("sankey", add_lib=F),
-          showOutput("dimple", add_lib=F)
+          #tableOutput("table") ,
+          chartOutput("sankey", "/Users/e/Google Drive/GitLib/sankeyNshiny/js") #,
+#           chartOutput("dimple", "/Users/e/Google Drive/GitLib/sankeyNshiny/js")
         )
     )
   )
 ))
+# library(devtools)
+# install_github("rCharts","ramnathv",ref="dev")
